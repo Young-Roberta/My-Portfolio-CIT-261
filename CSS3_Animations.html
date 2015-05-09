@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>CSS3 Animations</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="animate.css">
+    </head>
+    <body>
+        <h1>Animations</h1>
+        
+        <h2>Shaking</h2>
+        <img id="working" src="http://gdurl.com/GTn9" alt="Thumbs up image">
+        <h2>Broken</h2>
+        <img id="broken" src="http://gdurl.com/GTn9" alt="Thumbs up image">
+        <h2>Code for example</h2>
+        <pre><code data-language='CSS'>
+h1{
+   color: green;     
+}
+
+#working{
+  animation-duration: .5s;
+  -webkit-animation-duration: .5s;
+  animation-name: thumb;
+  -webkit-animation-name: thumb;  
+}
+
+#broken{
+ animation-duration: 2s;
+ animation-name: thumb;
+//common problem is not to include all of the browswers prefixes -webkit- Android, Chrome    
+}
+
+@keyframes thumb {
+    0% { transform: scale(1) rotate(-10deg);}
+   50% { transform: scale(0.5) rotate(10deg);} 
+   75% {trasform: scale (0.9) rotate(-10deg);}
+   100% {transform: scale(1)rotate(10deg);}          
+}
+     
+@-webkit-keyframes thumb {
+    
+   0% { -webkit-transform: scale(1) rotate(-10deg);}
+   50% { -webkit-transform: scale(0.5) rotate(10deg);}
+   75% { -webkit-transform: scale(0.9)rotate(-10deg)}
+   100% { -webkit-transform: scale(1) rotate(10deg);}              
+}
+      
+</code></pre>
+
+    </body>
+</html>

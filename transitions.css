@@ -1,0 +1,34 @@
+#working{
+    width: 200px;
+    height: 200px;
+    background: green;
+    border-radius: 20px;
+    -webkit-transition: width 2s, height 2s, -webkit-transform 2s;
+    transition: width 2s, height 2s, transform 2s;
+}
+    
+#working:hover {
+    width: 300px;
+    height: 300px;
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+    
+}
+#broken{
+    width: 200px;
+    height: 200px;
+    background: red;
+    border-radius: 20px;
+    -webkit-transition: 2s, 2s, -webkit-transform 2s;
+    transition: 2s, 2s, transform 2s;
+    
+#broken:hover {
+        width: 300px;
+        height: 300px;
+        webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+      
+    }
+    
+}
+    

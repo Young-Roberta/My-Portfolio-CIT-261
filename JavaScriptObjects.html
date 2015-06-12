@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript Objects</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    </head>
+    <body>
+        <h1>JavaScript Objects</h1>
+        <h2>JavaScript array of objects from a form</h2>
+        <p>.serializeArray() method, a JQuery method, creates an array of JS objects from the information provided in a form. 
+        When a user inputs data in the fields, the data is collected by the .serializeArray() into an JS object.  
+        My intention was that this JavaScript object would then be available to populate information into the 
+        portion of the app that would inform users about already scheduled events in their area.</p>
+        
+        <h1>Plan a Pickup!</h1>
+        <div>
+        <form>
+            
+            <label for ="name">Organizer Name: </label><br>
+            <input type ="text" name="name" value="" id="name"><br>
+            
+            <label for ="park">Park Name: </label><br> 
+            <input type ="text" name="park" value="" id="park"><br>
+            
+            <label for ="address"><b>Don't see your park?  Provide an address.</b><br>
+            Address 1:</label><br>
+            <input type="text" name="address" value="" id="address"><br>
+            
+            <label for="city">City: </label><br>
+            <input type="text" name="city" value="" id="city"><br>
+            
+            <label for="state">State: </label><br>
+            <input type="text" name="state" value="" id="state"><br>
+            
+            <label for="date">Date: </label><br>
+            <input type="date" name="date" id="date"><br>
+            
+            <label for="sport">Sport: </label><br>
+            <select name="sport">
+                <option></option>
+                <option>Football</option>
+                <option>Baseball</option>
+                <option>Soccer</option>
+                <option>Frisbee</option>
+            </select><br>  
+            </form>
+        <h2>Resulting JavaScript Object: <span id="results"></span></h2>
+            <script>
+                function formInputs(){
+                    var fields = $(":input").serializeArray();
+                    $("#results").empty();
+                    jQuery.each( fields, function(i, field){
+                        $("#results").append(field.value + " ");
+                    });
+                }
+                  $("select").change(formInputs);
+                    formInputs();
+                
+            </script> 
+        </div>
+            <p>Sources: <a href="http://api.jquery.com/serializeArray/">JQuery and serializeArray()</a> and <a href="http://www.w3schools.com/jquery/jquery_get_started.asp">W3schools</a></p>    
+           

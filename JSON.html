@@ -1,0 +1,191 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON EXAMPLES</title>
+    <script type="text/javascript" src="demo2.js"></script>
+    <style>     
+     h1 {
+    border-bottom: 3px solid #cc9900;
+    color: #996600;
+    font-size: 30px;
+}
+    table, th , td  {
+    border: 1px solid grey;
+    border-collapse: collapse;
+    padding: 5px;
+}
+    table tr:nth-child(odd)	{
+    background-color: #f1f1f1;
+}
+    table tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+    </style>
+    
+</head>
+<body>
+    <a href="index.html">Home</a>
+    <h1>JSON</h1>
+    <p>JSON or <b>J</b>ava<b>S</b>cript <b>O</b>bject <b>N</b>otation is syntax for storing and retrieving
+    data.  Primarily data that is stored in databases or in object arrays.  JSON can be used with any programming
+    language.  In this example I am using JSON to read data from my server and display it on the page.  You can go 
+    to this other <a href="AJAX.html"> page</a> on my website and fill in a form that will use AJAX to upload your data 
+    to the server.  When you are done, there is a link there to take you back to see the results!  It's important 
+    to note that this is not just taking the information from one page and placing it on this page but is saving it 
+    to and reading it from my database.</p>
+    <h2><a href="AJAX.html">Fill out the AJAX form</a>to see the JSON in action!</h2>
+    <h2>Visitor Schedules</h2>
+    <div id="output1"></div>
+  
+<script>
+    var xmlhttp = new XMLHttpRequest();
+    var url = "http://www.robertayoungdesigns.com/261Portfolio/visitor_infoMYSQL.php";
+    
+    xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200){
+            myFunction(xmlhttp.responseText);
+        }
+    }
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+    
+    function myFunction(response) {
+        var arr = JSON.parse(response);
+        var i;
+        var out = "<table>";
+        
+        for(i = 0; i < arr.length; i++){
+            out += "<tr><td>" + 
+            arr[i].Name +
+            "</td><td>" +
+            arr[i].Park +
+            "</td><td>" +
+            arr[i].Address +
+            "</td><td>" +
+            arr[i].City +
+            "</td><td>" +
+            arr[i].State +
+            "</td><td>" +
+            arr[i].Date +
+            "</td><td>" +
+            arr[i].Sport +
+            "</td></tr>" ;
+            
+        }
+        out += "</table>"
+        document.getElementById("output1").innerHTML = out;
+    }
+</script>
+
+<div id="code_block">
+<h2>The code</h2>
+<pre>
+var xmlhttp = new XMLHttpRequest();<br />
+    var url = "http://www.robertayoungdesigns.com/261Portfolio/visitor_infoMYSQL.php";<br />
+    <br />
+    xmlhttp.onreadystatechange=function(){<br />
+        if (xmlhttp.readyState === 4 &amp;&amp; xmlhttp.status === 200){<br />
+            myFunction(xmlhttp.responseText);<br />
+        }<br />
+    }<br />
+    xmlhttp.open("GET", url, true);<br />
+    xmlhttp.send();<br />
+    <br />
+    function myFunction(response) {<br />
+        var arr = JSON.parse(response);<br />
+        var i;<br />
+        var out = "&lt;table&gt;";<br />
+       <!-- <p>For brevity I cut out the table creation.</p> !-->
+        out += "&lt;/table&gt;"<br />
+        document.getElementById("output1").innerHTML = out;<br />
+    }<br />
+&lt;/script&gt;    
+</pre> 
+<p>As you can see the information is pulled from the database and then parsed using JSON from visitor_info.php which looks like this:
+[{"Name":"Roberta Young","Park":"Carver","Address":"404 S. Robinson St","City":"Cleburne","State":"Texas","Date":"2015-06-13","Sport":"Frisbee"}] for each entry all strung together.</p>
+</div>
+  <a href="http://www.w3schools.com/json/json_example.asp">Sources</a>
+
+  <h2>Another example: Stringify and Parse User Info</h2>
+  <p>When a user first registers to use your app, they would likely fill in a form that would be kept in the local storage 
+  that would have information such as their name, username, and password.  Here is a quick form to fill in.  JSON will be used 
+  parse and stringify the form.  </p>
+  
+<script type="text/javascript">
+function stringifyFunction(){
+	var myName = document.getElementById("myName");
+        var myPassword = document.getElementById("myPassword");
+        //create a userInfo JavaScript Object 
+        var userInfo = {
+            "name": myName.value,
+            "password": myPassword.value
+        };
+        
+        var stringified = JSON.stringify(userInfo);
+        document.getElementById("ans").innerHTML = (stringified + " This took the userInfo object that I built\n\
+and converted it to a JSON text and stored that in a string");
+        
+}
+
+function parseFunction(){
+    var myName = document.getElementById('myName');
+        var myPassword = document.getElementById('myPassword');
+        //create a userInfo 
+        var userInfo = {
+            "name": myName.value,
+            "password": myPassword.value
+        };
+    var stringified = JSON.stringify(userInfo);    
+    var parsed = JSON.parse(stringified);
+    
+    document.getElementById("ans").innerHTML = ("Hello " + parsed.name + ". Your password is " + parsed.password + " This took the string\n\
+that was created in the stringify function and turned it back into an object.  I then requested the property values of the object" );
+    
+}
+
+</script>
+<label>Name:</label><input type='text' id='myName' /><br/><br/>
+<label>Password:</label><input type="text" id='myPassword'/><br/><br/>
+<input type='button' onclick='stringifyFunction()' value='Stringify' />
+<input type='button' onclick ='parseFunction()' value='Parse' />
+<p id ="ans"></p>
+<div id="code_block">
+    <pre>
+
+function stringifyFunction(){
+	var myName = document.getElementById("myName");
+        var myPassword = document.getElementById("myPassword");
+        //create a userInfo 
+        var userInfo = {
+            "name": myName.value,
+            "password": myPassword.value
+        };
+        
+        var stringified = JSON.stringify(userInfo);
+        document.getElementById("ans").innerHTML = (stringified + " This took the userInfo object that I built\n\
+and converted it to a JSON text and stored that in a string");
+        
+}
+
+function parseFunction(){
+    var myName = document.getElementById('myName');
+        var myPassword = document.getElementById('myPassword');
+        //create a userInfo 
+        var userInfo = {
+            "name": myName.value,
+            "password": myPassword.value
+        };
+    var stringified = JSON.stringify(userInfo);    
+    var parsed = JSON.parse(stringified);
+    
+    document.getElementById("ans").innerHTML = ("Hello " + parsed.name + ". Your password is " + parsed.password + " This took the string\n\
+that was created in the stringify function and turned it back into an object.  I then requested the property values of the object" );
+    
+}
+   
+    </pre>
+</div>
+</body>
+</html>

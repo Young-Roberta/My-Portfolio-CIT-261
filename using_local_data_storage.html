@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <title>Local Storage EXAMPLES</title>
+    <script type="text/javascript" src="demo2.js"></script>
+    <style>     
+ 
+    </style>
+    
+</head>
+<body>
+
+  
+<script type="text/javascript">
+
+function saveUserInfo(){
+    function saveName(){
+       var name = document.getElementById('myName');
+       localStorage.setItem('myName',myName.value);
+       //alert(localStorage.getItem('myName')); testing
+    }
+    function savePassword(){
+        var password = document.getElementById('myPassword');
+        localStorage.setItem('myPassword',myPassword.value);
+         //alert(localStorage.getItem('myPassword'));
+    }
+    saveName();
+    savePassword();
+    
+    document.getElementById("ans").innerHTML = ("Welcome back " + localStorage.getItem('myName') +"!" + " Your password is "
+            + localStorage.getItem('myPassword') );
+}
+
+function greetUser(){
+   if(localStorage.getItem('myName') !== null)
+       document.write("Welcome back " + localStorage.getItem('myName') +"!" );
+}
+
+
+
+</script>
+<div id="display">
+    <script>
+        greetUser();
+    </script>
+</div>
+    
+    <h1>Local Storage</h1>
+    <p>Local storage is a way to store data on the user's own computer rather than
+    on a server.  This is good for several reasons: first, it can be used to store
+    data that will be available the next time the user wants it and makes loading time quicker.
+    Second, the data is available even when the user is not online and will be available the 
+    next time the program needs it whether the user is online or has closed the browser.</p>
+    <p>I have taken my JSON functions to use them to demonstrate local storage.  It is worth 
+    noting that local storage can only store strings so JSON stringify is really important.</p>
+    
+<label>Name:</label><input type='text' id='myName' /><br/><br/>
+<label>Password:</label><input type="text" id='myPassword'/><br/><br/>
+<input type='button' onclick ='saveUserInfo()' value='Local Storage'/>
+<p id ="ans"></p>
+
+<pre>
+ function saveUserInfo(){
+    function saveName(){
+       var name = document.getElementById('myName');
+       localStorage.setItem('myName',myName.value);
+       
+    }
+    function savePassword(){
+        var password = document.getElementById('myPassword');
+        localStorage.setItem('myPassword',myPassword.value);
+         
+    }
+    saveName();
+    savePassword();
+    
+    document.getElementById("ans").innerHTML = ("Welcome back " + localStorage.getItem('myName') +"!" + " Your password is "
+            + localStorage.getItem('myPassword') );
+}
+
+function greetUser(){
+   if(localStorage.getItem('myName') !== null)
+       document.write("Welcome back " + localStorage.getItem('myName') +"!" );
+}
+   
+</pre>
+<a href ='https://www.youtube.com/watch?v=TIDDfMLWelc'>Sources</a>
+</body>
+</html>

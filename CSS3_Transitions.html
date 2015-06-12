@@ -1,25 +1,49 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <title>CSS Transition</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="transitions.css">
-    </head>
+        <script>
+          function test1(el){
+              var element = document.getElementById(el);
+              element.style.transition= "height 1s linear 0s";
+              element.style.height = "200px";
+              
+          }
+         function test2(el){
+              var element = document.getElementById(el);
+              element.style.transition= "height 1s linear 0s";
+              element.style.height = "20px";
+              
+          }
+          
+        </script>
+    </head> 
     <body>
        
    	<div id="working">
-		<h1>A Working Example</h1>
-		
+		<h1>Hover Example</h1>
+                <p>An example with transition of width and height
+                plus 180 degree rotate transform on hover.</p>
+        </div>
+        <div id="click">
+            <h1>Click and Hold</h1>
+            <p>A transition of width and height on active.</p>
 	</div>
+            <button onClick="test2('clickbox');">Shrink!</button>
+            <button onClick="test1('clickbox');">Grow!</button>
+        <div id="clickbox">
+            <h1>CSS & JavaScript</h1>
+            <p>A transition using JavaScript to transition height.  
+                Can this be done without the buttons?</p>
+        </div>
+        
 	<div id="broken">
             <h1>A Broken Example</h1>
 	</div>          
    
     </body>
 </html>
+
